@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar"
+    android:scrollbarAlwaysDrawVerticalTrack="true"
+    tools:context=".MainActivity"
+    android:background="@color/black"
+    >
+    
+    
+
+
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/black"
+        android:background="@drawable/toolbar_border"
+        android:backgroundTintMode="add"
+        >
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/logo"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="start"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Student AI"
+            android:textSize="25dp"
+            android:layout_marginStart="25dp"
+            android:textColor="@color/white"/>
+
+        <ImageView
+            android:id="@+id/setting"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/key"
+            android:layout_gravity="end"
+            android:layout_marginEnd="20dp"/>
+
+
+
+    </androidx.appcompat.widget.Toolbar>
+
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Apps for you "
+        android:textColor="#FFFFFF"
+        android:layout_marginTop="165dp"
+        android:textStyle="bold"
+        android:layout_marginLeft="25dp"
+        android:textSize="30dp"/>
+
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="65dp"
+        android:text="What's new to learn? "
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        android:textStyle="bold|italic" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="100dp"
+        android:background="@drawable/search_view_border"
+        android:padding="5dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:id="@+id/bottomlayout">
+
+
+        <EditText
+            android:id="@+id/search1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toStartOf="@+id/searchbtn"
+            android:hint=" Search here"
+            android:background="@null"
+            android:textColorHint="@color/white"
+            android:textColor="@color/white"
+            android:maxLines="3"
+            android:padding="8dp"
+            android:drawableLeft="@drawable/search"/>
+
+        <ImageView
+            android:id="@+id/searchbtn"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="4dp"
+            android:padding="2dp"
+            android:src="@drawable/img" />
+
+
+
+    </RelativeLayout>
+
+
+    <GridView
+        android:id="@+id/grid_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        android:layout_below="@+id/textView4"/>
+
+
+
+</RelativeLayout>

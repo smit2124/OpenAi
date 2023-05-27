@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <style name="StudentAi" parent="Theme.AppCompat.Light.DarkActionBar">
+
+      <item name="colorPrimary">@color/design_default_color_primary</item>
+      <item name="colorPrimaryDark">@color/design_default_color_primary_dark</item>
+  </style>
+
+
+
+
+</resources>

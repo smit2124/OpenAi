@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="2dp"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/left_chat_view"
+        android:background="@drawable/message_bubble_left"
+        android:padding="12dp"
+        android:layout_marginEnd="80dp">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/left_chat_text_view"
+            android:textColor="@color/black"
+            android:textSize="16dp"
+            android:text="hello"
+            android:fontFamily="@font/cinzel"
+            android:textStyle="bold"
+            android:textIsSelectable="true"
+            android:maxLines="4"
+            android:textColorHint="@color/white"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/right_chat_view"
+        android:background="@drawable/message_bubble_right"
+        android:padding="12dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="80dp">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/right_chat_text_view"
+            android:textColor="@color/white"
+            android:fontFamily="@font/cinzel"
+            android:textSize="16dp"
+            android:textStyle="bold"
+            android:textIsSelectable="true"
+            android:maxLines="4"
+            android:text="hello"
+            />
+
+    </LinearLayout>
+
+</RelativeLayout>
