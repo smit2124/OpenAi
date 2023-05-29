@@ -21,6 +21,7 @@ import android.os.Bundle;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
 import android.text.TextUtils;
+import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -33,6 +34,7 @@ import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.Switch;
+import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -43,14 +45,13 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     EditText search1;
-    ImageView searchbtn, setting;
+    ImageView searchbtn, key, info;
     private Animation animation;
 
 
     private List<CardData> mCardDataList;
 
     private GridView mgridView;
-
 
 
     @Override
@@ -71,32 +72,28 @@ public class MainActivity extends AppCompatActivity {
         animation = AnimationUtils.loadAnimation(this, R.anim.scale_animation);
 
 
-        setting = findViewById(R.id.setting);
+        key = findViewById(R.id.key);
+
 
         mCardDataList = new ArrayList<>();
-        mCardDataList.add(new CardData("topic-explainer", R.drawable.topic, "#FAC06e", "ᴛᴏᴘɪᴄ ᴇxᴘʟᴀɪɴᴇʀ", "Explain Like 5 Year Old Child"));
-        mCardDataList.add(new CardData("compare-topics", R.drawable.compare, "#B3EF9F", "ᴄᴏᴍᴘᴀʀᴇ ᴛᴏᴘɪᴄ", "Get Difference with Pros & Cons"));
-        mCardDataList.add(new CardData("summarise-text", R.drawable.summarize, "#FAB6B6", "ꜱᴜᴍᴍᴀʀɪꜱᴇ ᴛᴇxᴛ", "Easy & Quick to Understand"));
-        mCardDataList.add(new CardData("mcq-type-quiz", R.drawable.mcq, "#A5D3ED", "ᴍᴄQ ᴛʏᴘᴇ Qᴜɪᴢ", "Generate MCQs with Answer"));
-        mCardDataList.add(new CardData("comprehensive-study-plan", R.drawable.study, "#F8F8A0", "ᴄʀᴇᴀᴛᴇ ꜱᴛᴜᴅʏ ᴘʟᴀɴ", "Comprehensive Study Plan"));
+        mCardDataList.add(new CardData("topic-explainer", R.drawable.topic, "#FAC06e", "\uD835\uDC13\uD835\uDC28\uD835\uDC29\uD835\uDC22\uD835\uDC1C \uD835\uDC04\uD835\uDC31\uD835\uDC29\uD835\uDC25\uD835\uDC1A\uD835\uDC22\uD835\uDC27\uD835\uDC1E\uD835\uDC2B", "Explain Like 5 Year Old Child"));
+        mCardDataList.add(new CardData("compare-topics", R.drawable.compare, "#B3EF9F", "\uD835\uDC02\uD835\uDC28\uD835\uDC26\uD835\uDC29\uD835\uDC1A\uD835\uDC2B\uD835\uDC1E \uD835\uDC13\uD835\uDC28\uD835\uDC29\uD835\uDC22\uD835\uDC1C", "Get Difference with Pros & Cons"));
+        mCardDataList.add(new CardData("summarise-text", R.drawable.summarize, "#FAB6B6", "\uD835\uDC02\uD835\uDC28\uD835\uDC26\uD835\uDC29\uD835\uDC1A\uD835\uDC2B\uD835\uDC1E \uD835\uDC13\uD835\uDC28\uD835\uDC29\uD835\uDC22\uD835\uDC1C", "Easy & Quick to Understand"));
+        mCardDataList.add(new CardData("mcq-type-quiz", R.drawable.mcq, "#A5D3ED", "\uD835\uDC0C\uD835\uDC1C\uD835\uDC2A  \uD835\uDC13\uD835\uDC32\uD835\uDC29\uD835\uDC1E \uD835\uDC10\uD835\uDC2E\uD835\uDC22\uD835\uDC33", "Generate MCQs with Answer"));
+        mCardDataList.add(new CardData("comprehensive-study-plan", R.drawable.study, "#F8F8A0", "\uD835\uDC02\uD835\uDC2B\uD835\uDC1E\uD835\uDC1A\uD835\uDC2D\uD835\uDC1E \uD835\uDC12\uD835\uDC2D\uD835\uDC2E\uD835\uDC1D\uD835\uDC32 \uD835\uDC0F\uD835\uDC25\uD835\uDC1A\uD835\uDC27", "Comprehensive Study Plan"));
 
 
-
-
-        mgridView=findViewById(R.id.grid_view);
-        CardAdapter cardAdapter= new CardAdapter(this,mCardDataList);
+        mgridView = findViewById(R.id.grid_view);
+        CardAdapter cardAdapter = new CardAdapter(this, mCardDataList);
         mgridView.setNumColumns(2);
         mgridView.setAdapter(cardAdapter);
-
-
 
 
         searchbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-               searchbtn.startAnimation(animation);
-                //  animateRotation();
+                searchbtn.startAnimation(animation);
 
                 String text = search1.getText().toString().trim();
                 String usersearch = search1.getText().toString();
@@ -105,34 +102,33 @@ public class MainActivity extends AppCompatActivity {
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                         vibrator.vibrate(VibrationEffect.createOneShot(100, VibrationEffect.DEFAULT_AMPLITUDE));
 
-                if (search1.getText().toString().length()==0) {
-                    search1.setError("kuch information to dede yar..");
+                        if (search1.getText().toString().length() == 0) {
+                            search1.setError("kuch information to dede yar..");
 
 
-                    } else {
-                        Intent i = new Intent(MainActivity.this, search.class);
+                        } else {
+//                            new CallApi().callAPI(usersearch);
+                            Intent i = new Intent(MainActivity.this, search.class);
 
-                        i.putExtra("search", usersearch);
+                            i.putExtra("search", usersearch);
 
-                        startActivity(i);
-                        search1.getText().clear();
-                    }
+                            startActivity(i);
+                            search1.getText().clear();
+                        }
                     }
                 }
 
 //
             }
-       });
+        });
 
-       // searchbtn.setSoundEffectsEnabled(true);
 
-        setting.setOnClickListener(new View.OnClickListener() {
+        key.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 alert();
             }
         });
-
 
     }
 
@@ -149,6 +145,8 @@ public class MainActivity extends AppCompatActivity {
         EditText inputText = dialogView.findViewById(R.id.input_text);
 
         inputText.setText(global.getGlobalVariable());
+
+        inputText.getText().clear();
 
         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override
@@ -168,14 +166,5 @@ public class MainActivity extends AppCompatActivity {
         dialog.show();
 
 
-
     }
-//    private void animateRotation() {
-//        // Load the animation from XML
-//        AnimatorSet animatorSet = (AnimatorSet) AnimatorInflater.loadAnimator(this, R.animator.rotate_animation);
-//        animatorSet.setTarget(searchbtn);
-//        animatorSet.start();
-//    }
-//
-
 }

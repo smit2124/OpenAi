@@ -59,7 +59,7 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_toStartOf="@+id/sndbtn"
-            android:background="#A9000000"
+            android:background="#CD000000"
             android:drawableLeft="@drawable/search"
             android:hint=" Search here"
             android:maxLines="5"
@@ -75,8 +75,7 @@
             android:layout_centerVertical="true"
             android:layout_marginTop="4dp"
             android:layout_marginEnd="4dp"
-            android:padding="2dp"
-            android:src="@drawable/img" />
+            android:padding="2dp" android:src="@drawable/img" />
 
 
     </RelativeLayout>

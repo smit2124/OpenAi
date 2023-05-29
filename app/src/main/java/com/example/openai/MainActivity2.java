@@ -230,8 +230,6 @@ public class MainActivity2 extends AppCompatActivity {
         try {
             Iterator<?> keys = properties.keys();
             Map<String, String> editTextValue = new HashMap<>();
-            editTextValue.put("prompt", jsonObject.getString("prompt"));
-
 
             while (keys.hasNext()) {
                 String key = (String) keys.next();
@@ -268,12 +266,12 @@ public class MainActivity2 extends AppCompatActivity {
                 editText.setPadding(20, 25, 20, 25);
                 editText.setTextColor(getResources().getColor(R.color.black));
                 editText.setHintTextColor(getResources().getColor(R.color.black));
+                editText.setText(property.getString("default"));
 
 
                 editText.addTextChangedListener(new TextWatcher() {
                     @Override
                     public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                        // Not needed for this example
                     }
 
                     @Override
@@ -299,6 +297,7 @@ public class MainActivity2 extends AppCompatActivity {
                 editText.setId(View.generateViewId()); // Set a unique ID for each EditText
                 linearLayout.addView(editText);
 
+                editTextValue.put("prompt", jsonObject.getString("prompt"));
 
                 btn1.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -314,6 +313,8 @@ public class MainActivity2 extends AppCompatActivity {
 
                                     }
                                 } else {
+//                                    callAPI(getIntent().getStringExtra("editTextVal"));
+
                                     Log.d("mymap", "onClick: " + editTextValue);
                                     Intent i = new Intent(MainActivity2.this, search.class);
                                     i.putExtra("editTextVal", editTextValue.toString());
@@ -321,6 +322,9 @@ public class MainActivity2 extends AppCompatActivity {
                                 }
                             }
                         }
+                    }
+
+                    private void callAPI(String editTextVal) {
                     }
                 });
 

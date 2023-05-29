@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -39,7 +40,7 @@ import okhttp3.Response;
 public class search extends AppCompatActivity {
     RecyclerView rec;
     EditText msgbox1;
-    ImageView sndbtn,backsearch;
+    ImageView sndbtn, backsearch;
     List<messagemodel> messageList;
     MessgeAdapter messageAdapter;
     public static final MediaType JSON
@@ -59,7 +60,7 @@ public class search extends AppCompatActivity {
         Vibrator vibrator = (Vibrator) getSystemService(VIBRATOR_SERVICE);
         Animation animation = AnimationUtils.loadAnimation(this, R.anim.scale_animation);
 
-        backsearch=findViewById(R.id.backsearch);
+        backsearch = findViewById(R.id.backsearch);
 
         backsearch.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,21 +68,43 @@ public class search extends AppCompatActivity {
                 onBackPressed();
             }
         });
+        String usersearch = getIntent().getStringExtra("search");
+        if (usersearch != null) {
 
-        String usersearch=getIntent().getStringExtra("search");
+//            addToChat(usersearch, "me");
+            messageList.add(new messagemodel(usersearch, "me"));
+            messageList.add(new messagemodel("\uD835\uDC95\uD835\uDC9A\uD835\uDC91\uD835\uDC8A\uD835\uDC8F\uD835\uDC88...", messagemodel.SENT_BY_BOT));
 
-        msgbox1.setText(usersearch);
+            CallApi callApi = new CallApi();
+            callApi.callAPI(usersearch, new CallApi.ApiResponseCallback() {
+                @Override
+                public void onResponse(String response) {
+                    // Handle the response here
+                    addResponse(response);
+                    // The 'response' parameter contains the API response
+                }
 
-        messageList.add(new messagemodel(msgbox1.getText().toString(),"me"));
-
-//        callAPI(msgbox1.getText().toString());
-        try {
-            callAPI(getIntent().getStringExtra("editTextVal"));
-        } catch (JSONException e) {
-            throw new RuntimeException(e);
+                @Override
+                public void onFailure(Throwable error) {
+                    // Handle the failure here
+                    // The 'error' parameter contains the encountered error
+                }
+            });
         }
+        String editTextVal = getIntent().getStringExtra("editTextVal");
+        if (editTextVal != null){
+            CallApi callApi = new CallApi();
+            callApi.callAPI(editTextVal, new CallApi.ApiResponseCallback() {
+                @Override
+                public void onResponse(String response) {
+                    addResponse(response);
+                }
 
-
+                @Override
+                public void onFailure(Throwable error) {
+                }
+            });
+        }
         messageAdapter = new MessgeAdapter(messageList);
         rec.setAdapter(messageAdapter);
         LinearLayoutManager llm = new LinearLayoutManager(this);
@@ -90,6 +113,7 @@ public class search extends AppCompatActivity {
 
         sndbtn.setOnClickListener((v) -> {
             String question = msgbox1.getText().toString().trim();
+            msgbox1.getText().clear();
 
             sndbtn.startAnimation(animation);
 
@@ -99,14 +123,24 @@ public class search extends AppCompatActivity {
                     vibrator.vibrate(VibrationEffect.createOneShot(100, VibrationEffect.DEFAULT_AMPLITUDE));
                     if (!TextUtils.isEmpty(question)) {
                         addToChat(question, messagemodel.SENT_BY_ME);
-                        try {
-                            callAPI(question);
-                        } catch (JSONException e) {
-                            throw new RuntimeException(e);
-                        }
+                        messageList.add(new messagemodel("\uD835\uDC95\uD835\uDC9A\uD835\uDC91\uD835\uDC8A\uD835\uDC8F\uD835\uDC88...", messagemodel.SENT_BY_BOT));
+                        CallApi callApi = new CallApi();
+                        callApi.callAPI(question, new CallApi.ApiResponseCallback() {
+                            @Override
+                            public void onResponse(String response) {
+                                // Handle the response here
+                                addResponse(response);
+                                // The 'response' parameter contains the API response
+                            }
+
+                            @Override
+                            public void onFailure(Throwable error) {
+                                // Handle the failure here
+                                // The 'error' parameter contains the encountered error
+                            }
+                        });
 
                     } else {
-                        // Handle empty question case if needed
                     }
                 }
             }
@@ -129,58 +163,5 @@ public class search extends AppCompatActivity {
         addToChat(response, messagemodel.SENT_BY_BOT);
     }
 
-    void callAPI(String question) throws JSONException {
 
-        Global myApp = (Global) getApplication();
-        String value = myApp.getGlobalVariable();
-        // okhttp
-        messageList.add(new messagemodel("\uD835\uDC95\uD835\uDC9A\uD835\uDC91\uD835\uDC8A\uD835\uDC8F\uD835\uDC88...", messagemodel.SENT_BY_BOT));
-
-        JSONObject jsonBody = new JSONObject();
-//        JSONObject jsonData = new JSONObject();
-//        jsonData.put("role", "user");
-        try {
-            jsonBody.put("model", "text-davinci-003");
-            jsonBody.put("prompt", question);
-            jsonBody.put("max_tokens", 4000);
-            jsonBody.put("temperature", 0);
-//            jsonBody.put("message", jsonData);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        RequestBody body = RequestBody.create(jsonBody.toString(), JSON);
-        Request request = new Request.Builder()
-                .url("https://api.hypere.app/v1/completions")
-                .header("Authorization", "Bearer "+value)
-                .post(body)
-                .build();
-
-        msgbox1.getText().clear();
-
-        client.newCall(request).enqueue(new Callback() {
-            @Override
-            public void onFailure(@NonNull Call call, @NonNull IOException e) {
-                addResponse("Failed to load response due to " + e.getMessage());
-            }
-
-
-            @Override
-            public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
-                if (response.isSuccessful()) {
-                    JSONObject jsonObject = null;
-                    try {
-                        jsonObject = new JSONObject(response.body().string());
-                        JSONArray jsonArray = jsonObject.getJSONArray("choices");
-                        String result = jsonArray.getJSONObject(0).getString("text");
-                        addResponse(result.trim());
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                } else {
-                    addResponse("Failed to load response due to " + response.body().toString());
-                }
-            }
-        });
-
-    }
 }
