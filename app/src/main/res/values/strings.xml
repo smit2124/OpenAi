@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">openAI</string>
     <string name="apikey"></string>
+    <string name="OpenDrawer">open Navigation Drawer</string>
+    <string name="CloseDrawer">close Navigation Drawer</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

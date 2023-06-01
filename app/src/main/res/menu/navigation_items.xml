@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/optshare"
+        android:title="Share App"
+        android:icon="@drawable/share"/>
+
+    <item
+        android:id="@+id/optrate"
+        android:title="Rate Us"
+        android:icon="@drawable/rate"/>
+
+    <item
+        android:id="@+id/optlog"
+        android:title="Log in"
+        android:icon="@drawable/login"/>
+</menu>

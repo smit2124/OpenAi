@@ -1,43 +1,38 @@
 package com.example.openai;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.app.AppCompatDelegate;
-import androidx.appcompat.widget.SearchView;
-import androidx.appcompat.widget.SwitchCompat;
-import androidx.cardview.widget.CardView;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
-import android.animation.AnimatorInflater;
-import android.animation.AnimatorSet;
-import android.app.DatePickerDialog;
+import android.content.ClipData;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
-import android.graphics.Rect;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
-import android.text.TextUtils;
-import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
+import android.view.MenuItem;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.Adapter;
 import android.widget.EditText;
 import android.widget.GridView;
+import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.Switch;
-import android.widget.TextView;
+import android.widget.Toast;
 
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
+import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,13 +40,17 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     EditText search1;
-    ImageView searchbtn, key, info;
+    ImageView searchbtn, key;
+
+    ImageButton drawer_toggle_button;
     private Animation animation;
-
-
     private List<CardData> mCardDataList;
-
     private GridView mgridView;
+    DrawerLayout drawerLayout;
+    NavigationView navigation_view;
+    Toolbar toolbar;
+    private Fragment fragment;
+
 
 
     @Override
@@ -73,6 +72,33 @@ public class MainActivity extends AppCompatActivity {
 
 
         key = findViewById(R.id.key);
+
+        drawerLayout =findViewById(R.id.drawer_layout);
+        navigation_view=findViewById(R.id.navigation_view);
+        drawer_toggle_button=findViewById(R.id.drawer_toggle_button);
+
+
+       // navigation_view.inflateMenu(R.menu.navigation_items);
+        navigation_view.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+         @Override
+         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+             int id= item.getItemId();
+
+             if (id==R.id.optshare){
+                 Toast.makeText(MainActivity.this, "share", Toast.LENGTH_SHORT).show();
+             } else if (id==R.id.optrate) {
+                 Toast.makeText(MainActivity.this, "star", Toast.LENGTH_SHORT).show();
+
+             }else {
+                 loadfragment(new AFragment());
+             }
+
+//             DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
+//             drawerLayout.closeDrawer(GravityCompat.START);
+             return true;
+         }
+     });
+
 
 
         mCardDataList = new ArrayList<>();
@@ -117,19 +143,27 @@ public class MainActivity extends AppCompatActivity {
                         }
                     }
                 }
-
-//
             }
         });
+
+
 
 
         key.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                alert();
+               alert();
             }
-        });
+      });
+    }
 
+    private void loadfragment(Fragment fragment) {
+
+        FragmentManager fm = getSupportFragmentManager();
+        FragmentTransaction ft = fm.beginTransaction();
+
+        ft.add(R.id.container,fragment);
+        ft.commit();
     }
 
 
@@ -166,5 +200,14 @@ public class MainActivity extends AppCompatActivity {
         dialog.show();
 
 
+    }
+
+    public void toggleDrawer(View view) {
+        DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            drawerLayout.closeDrawer(GravityCompat.START);
+        } else {
+            drawerLayout.openDrawer(GravityCompat.START);
+        }
     }
 }
