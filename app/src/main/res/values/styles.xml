@@ -6,6 +6,10 @@
       <item name="colorPrimaryDark">@color/design_default_color_primary_dark</item>
   </style>
 
+    <style name="CustomRatingBar" parent="@style/Widget.AppCompat.RatingBar">
+        <item name="android:progressTint">#FFD700</item>
+        <item name="android:progressBackgroundTint">@color/custom_rating_bar_background_color</item>
+    </style>
 
 
 

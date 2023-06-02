@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.app.Dialog;
 import android.content.ClipData;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -26,10 +27,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
@@ -50,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
     NavigationView navigation_view;
     Toolbar toolbar;
     private Fragment fragment;
-
+    private Dialog alertDialog;
 
 
     @Override
@@ -77,24 +80,38 @@ public class MainActivity extends AppCompatActivity {
         navigation_view=findViewById(R.id.navigation_view);
         drawer_toggle_button=findViewById(R.id.drawer_toggle_button);
 
+        //NavigationView navigationView = findViewById(R.id.navigation_view);
 
-       // navigation_view.inflateMenu(R.menu.navigation_items);
         navigation_view.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
          @Override
          public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-             int id= item.getItemId();
 
-             if (id==R.id.optshare){
-                 Toast.makeText(MainActivity.this, "share", Toast.LENGTH_SHORT).show();
-             } else if (id==R.id.optrate) {
-                 Toast.makeText(MainActivity.this, "star", Toast.LENGTH_SHORT).show();
-
-             }else {
-                 loadfragment(new AFragment());
+             DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
+             if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+                 drawerLayout.closeDrawer(GravityCompat.START);
+             } else {
+                 drawerLayout.openDrawer(GravityCompat.START);
              }
 
-//             DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
-//             drawerLayout.closeDrawer(GravityCompat.START);
+
+
+             int id= item.getItemId();
+
+             if (id == R.id.optlog) {
+                 Toast.makeText(MainActivity.this, "hii", Toast.LENGTH_SHORT).show();
+             } else if (id==R.id.optshare) {
+                 Intent share=new Intent(Intent.ACTION_SEND);
+                 share.setType("Text/plain");
+                 share.putExtra(Intent.EXTRA_TEXT,"download this app, https://www.goggle.com");
+                 startActivity(Intent.createChooser(share,"share"));
+             }else if (id==R.id.optrate){
+                 showRateUsDialog();
+             }
+
+
+
+
+             drawerLayout.closeDrawer(GravityCompat.START);
              return true;
          }
      });
@@ -126,14 +143,13 @@ public class MainActivity extends AppCompatActivity {
 
                 if (vibrator != null) {
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                        vibrator.vibrate(VibrationEffect.createOneShot(100, VibrationEffect.DEFAULT_AMPLITUDE));
+                        vibrator.vibrate(VibrationEffect.createOneShot(30, VibrationEffect.DEFAULT_AMPLITUDE));
 
                         if (search1.getText().toString().length() == 0) {
                             search1.setError("kuch information to dede yar..");
 
 
                         } else {
-//                            new CallApi().callAPI(usersearch);
                             Intent i = new Intent(MainActivity.this, search.class);
 
                             i.putExtra("search", usersearch);
@@ -198,9 +214,25 @@ public class MainActivity extends AppCompatActivity {
 
         AlertDialog dialog = builder.create();
         dialog.show();
-
-
     }
+
+
+    private void showRateUsDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        LayoutInflater inflater = getLayoutInflater();
+        View dialogView = inflater.inflate(R.layout.rate, null);
+        builder.setView(dialogView);
+
+
+        RatingBar ratingBar = dialogView.findViewById(R.id.rating_bar);
+
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+    }
+
+
+
+
 
     public void toggleDrawer(View view) {
         DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
@@ -211,3 +243,5 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 }
+
+

@@ -41,6 +41,7 @@ public class search extends AppCompatActivity {
     RecyclerView rec;
     EditText msgbox1;
     ImageView sndbtn, backsearch;
+    ImageButton clearchat;
     List<messagemodel> messageList;
     MessgeAdapter messageAdapter;
     public static final MediaType JSON
@@ -61,6 +62,8 @@ public class search extends AppCompatActivity {
         Animation animation = AnimationUtils.loadAnimation(this, R.anim.scale_animation);
 
         backsearch = findViewById(R.id.backsearch);
+        clearchat=findViewById(R.id.clearchat);
+
 
         backsearch.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,6 +71,19 @@ public class search extends AppCompatActivity {
                 onBackPressed();
             }
         });
+
+        clearchat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                messageList.clear();
+            }
+        });
+
+
+
+
+
+
         String usersearch = getIntent().getStringExtra("search");
         if (usersearch != null) {
 
@@ -93,10 +109,15 @@ public class search extends AppCompatActivity {
         }
         String editTextVal = getIntent().getStringExtra("editTextVal");
         if (editTextVal != null){
+        editTextVal = editTextVal.substring(1, editTextVal.length()-1);
+
+            messageList.add(new messagemodel("\uD835\uDC95\uD835\uDC9A\uD835\uDC91\uD835\uDC8A\uD835\uDC8F\uD835\uDC88...", messagemodel.SENT_BY_BOT));
+            Log.d("editText", "onCreate: "+ editTextVal);
             CallApi callApi = new CallApi();
             callApi.callAPI(editTextVal, new CallApi.ApiResponseCallback() {
                 @Override
                 public void onResponse(String response) {
+                    Log.d("moosa3", "onResponse: "+ response);
                     addResponse(response);
                 }
 

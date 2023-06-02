@@ -6,21 +6,10 @@
     tools:context=".MainActivity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:openDrawer="start"
     android:fitsSystemWindows="true">
 
 
 
-
-    <com.google.android.material.navigation.NavigationView
-        android:id="@+id/navigation_view"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:fitsSystemWindows="true"
-        android:layout_gravity="start"
-        app:headerLayout="@layout/header_lay"
-        app:menu="@menu/navigation_items"
-        />
 
 
 
@@ -98,28 +87,28 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="25dp"
-            android:layout_marginTop="65dp"
-            android:text="What's new to learn? "
-            android:textColor="#FFFFFF"
+            android:layout_marginTop="60dp"
+            android:text="𝕎𝕙𝕒𝕥𝕤 𝕟𝕖𝕨 𝕥𝕠 𝕝𝕖𝕒𝕣𝕟 ?"
+            android:textColor="#F3EBEB"
             android:textSize="24sp"
             android:textStyle="bold|italic" />
         <TextView
             android:id="@+id/textView4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Apps for you "
-            android:textColor="#FFFFFF"
-            android:layout_marginTop="165dp"
+            android:text="𝔸𝕡𝕡𝕤 𝕗𝕠𝕣 𝕪𝕠𝕦"
+            android:textColor="#F3EBEB"
+            android:layout_marginTop="190dp"
             android:textStyle="bold"
             android:layout_marginLeft="25dp"
-            android:textSize="30dp" />
+            android:textSize="24dp" />
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_marginTop="100dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="110dp"
             android:background="@drawable/search_view_border"
-            android:padding="5dp"
+            android:padding="0dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:id="@+id/bottomlayout">
@@ -133,22 +122,21 @@
                 android:layout_toStartOf="@+id/searchbtn"
                 android:hint=" Search here"
                 android:background="@null"
+                android:layout_marginStart="12dp"
                 android:textColorHint="@color/white"
                 android:textColor="@color/white"
-                android:maxLines="3"
-                android:padding="8dp"
-                android:drawableLeft="@drawable/search"/>
+                android:maxLines="3"/>
 
             <ImageView
                 android:id="@+id/searchbtn"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
+                android:layout_width="34dp"
+                android:layout_height="34dp"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
                 android:layout_marginTop="4dp"
-                android:layout_marginEnd="4dp"
-                android:padding="2dp"
-                android:src="@drawable/img" />
+                android:layout_marginEnd="6dp"
+                android:padding="4dp"
+                android:src="@drawable/img_4" />
 
 
 
@@ -159,7 +147,6 @@
             android:layout_height="match_parent"
             android:layout_below="@id/textView4"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="20dp"
             android:layout_marginEnd="10dp"
             android:layout_marginBottom="10dp" />
 
@@ -170,5 +157,16 @@
             android:text="hiii"/>
 
     </RelativeLayout>
+
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/navigation_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"
+        app:headerLayout="@layout/header_lay"
+        app:menu="@menu/navigation_items" />
+
 
 </androidx.drawerlayout.widget.DrawerLayout>

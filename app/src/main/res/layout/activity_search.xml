@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/img_1"
+    android:background="@drawable/img_2"
     tools:context=".search">
 
     <androidx.appcompat.widget.Toolbar
@@ -13,7 +13,8 @@
         android:backgroundTint="#D30E0E0E"
         android:background="@drawable/toolbar_border"
         android:elevation="5dp"
-        android:backgroundTintMode="add">
+        android:backgroundTintMode="add"
+        >
 
         <ImageView
             android:id="@+id/backsearch"
@@ -30,6 +31,14 @@
             android:textSize="25dp"
             android:layout_marginStart="25dp"
             android:textColor="@color/white"/>
+
+        <ImageButton
+            android:id="@+id/clearchat"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_gravity="end"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/delete" />
 
     </androidx.appcompat.widget.Toolbar>
 
@@ -59,23 +68,24 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_toStartOf="@+id/sndbtn"
-            android:background="#CD000000"
-            android:drawableLeft="@drawable/search"
+            android:background="#7C000000"
             android:hint=" Search here"
+            android:layout_marginStart="4dp"
             android:maxLines="5"
-            android:padding="8dp"
+            android:padding="0dp"
             android:textColor="@color/white"
             android:textColorHint="@color/white" />
 
         <ImageView
             android:id="@+id/sndbtn"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
+            android:layout_width="33dp"
+            android:layout_height="33dp"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             android:layout_marginTop="4dp"
-            android:layout_marginEnd="4dp"
-            android:padding="2dp" android:src="@drawable/img" />
+            android:layout_marginEnd="2dp"
+            android:padding="2dp"
+            android:src="@drawable/img_4" />
 
 
     </RelativeLayout>

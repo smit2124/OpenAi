@@ -2,4 +2,9 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="custom_rating_bar_color">#FFC107</color> <!-- Change this to the desired color -->
+    <color name="custom_rating_bar_background_color">#C0C0C0</color> <!-- Change this to the desired background color -->
+
+
 </resources>

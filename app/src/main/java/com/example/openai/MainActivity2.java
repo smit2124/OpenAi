@@ -101,7 +101,7 @@ public class MainActivity2 extends AppCompatActivity {
                 "    \"id\": \"summarise-text\",\n" +
                 "    \"title\": \"Summarise Text\",\n" +
 
-                "    \"prompt\": \"Summarise the text delimited with triple backticks {text} and output format summary: in {count} words\",\n" +
+                "    \"prompt\": \"Summarise the text delimited with triple backticks ```{text}``` and output format summary: in {count} words\",\n" +
                 "    \"schema\": {\n" +
                 "      \"properties\": {\n" +
                 "        \"{text}\": {\n" +
@@ -123,7 +123,7 @@ public class MainActivity2 extends AppCompatActivity {
                 "    \"id\": \"mcq-type-quiz\",\n" +
                 "    \"title\": \"Mcq-Type-Quiz\",\n" +
 
-                "    \"prompt\": \"Create MCQ type quiz  from text delimited with triple backticks {text}. output should be in markdown with format : Question , options and correct answer\",\n" +
+                "    \"prompt\": \"Create MCQ type quiz  from text delimited with triple backticks ```{text}```. output should be in markdown with format : Question , options and correct answer\",\n" +
                 "    \"schema\": {\n" +
                 "      \"properties\": {\n" +
                 "        \"{text}\": {\n" +
@@ -279,14 +279,11 @@ public class MainActivity2 extends AppCompatActivity {
                         // Save the current value of the EditText
                         String value = s.toString();
                         editTextValue.put(key, value);
-                        // Perform any necessary operations with the value
-                        // (e.g., store it in a variable, save it to a database, etc.)
                     }
 
 
                     @Override
                     public void afterTextChanged(Editable s) {
-                        // Not needed for this example
                     }
                 });
 
@@ -313,18 +310,13 @@ public class MainActivity2 extends AppCompatActivity {
 
                                     }
                                 } else {
-//                                    callAPI(getIntent().getStringExtra("editTextVal"));
-
-                                    Log.d("mymap", "onClick: " + editTextValue);
                                     Intent i = new Intent(MainActivity2.this, search.class);
                                     i.putExtra("editTextVal", editTextValue.toString());
                                     startActivity(i);
+                                    editTextValue.clear();
                                 }
                             }
                         }
-                    }
-
-                    private void callAPI(String editTextVal) {
                     }
                 });
 

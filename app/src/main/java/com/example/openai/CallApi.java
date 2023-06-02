@@ -46,7 +46,7 @@ public class CallApi {
                 .url("https://api.hypere.app/v1/chat/completions")
                 .post(body)
                 .addHeader("Content-Type", "application/json")
-                .addHeader("Authorization", "Bearer fg-DEWPD66EUAE3HEP2P5P262IMHTSLLLA3P39LWWAE")
+                .addHeader("authorization", "Bearer fg-DEWPD66EUAE3HEP2P5P262IMHTSLLLA3P39LWWAE")
                 .build();
 
 
@@ -73,7 +73,6 @@ public class CallApi {
                     }
                 } else {
                     callback.onFailure(new Exception("Request failed with code: " + response.code()));
-                    Log.d("resCode", "onResponse: "+ response.code());
                 }
             }
         });
