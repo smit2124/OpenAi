@@ -2,11 +2,6 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/optshare"
-        android:title="Share App"
-        android:icon="@drawable/share"/>
-
-    <item
         android:id="@+id/optrate"
         android:title="Rate Us"
         android:icon="@drawable/rate"/>
@@ -15,4 +10,10 @@
         android:id="@+id/optlog"
         android:title="Log in"
         android:icon="@drawable/login"/>
+    <item
+        android:id="@+id/optshare"
+        android:title="Share"
+        android:icon="@drawable/share"/>
+
+
 </menu>

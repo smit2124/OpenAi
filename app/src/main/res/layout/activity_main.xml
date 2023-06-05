@@ -8,28 +8,23 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true">
 
-
-
-
-
-
     <RelativeLayout
+        android:id="@+id/relative"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:paddingTop="35dp"
+        android:paddingStart="-5dp"
+        android:paddingEnd="-5dp"
         android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar"
         android:scrollbarAlwaysDrawVerticalTrack="true"
-        android:background="@color/black">
-
-
-
-
+        android:background="@drawable/backgroundgradient"
+       >
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/tooll"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/black"
-            android:background="@drawable/toolbar_border"
             android:backgroundTintMode="add">
 
 
@@ -88,20 +83,11 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="25dp"
             android:layout_marginTop="60dp"
-            android:text="𝕎𝕙𝕒𝕥𝕤 𝕟𝕖𝕨 𝕥𝕠 𝕝𝕖𝕒𝕣𝕟 ?"
+            android:text="𝐖𝐡𝐚𝐭𝐬 𝐧𝐞𝐰 𝐭𝐨 𝐥𝐞𝐚𝐫𝐧 ?"
             android:textColor="#F3EBEB"
             android:textSize="24sp"
             android:textStyle="bold|italic" />
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="𝔸𝕡𝕡𝕤 𝕗𝕠𝕣 𝕪𝕠𝕦"
-            android:textColor="#F3EBEB"
-            android:layout_marginTop="190dp"
-            android:textStyle="bold"
-            android:layout_marginLeft="25dp"
-            android:textSize="24dp" />
+
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -141,28 +127,47 @@
 
 
         </RelativeLayout>
-        <GridView
-            android:id="@+id/grid_view"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@id/textView4"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginBottom="10dp" />
+
+
+    <RelativeLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+    android:layout_below="@id/bottomlayout">
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@+id/grid_view"
-            android:text="hiii"/>
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="𝐀𝐩𝐩𝐬 𝐟𝐨𝐫 𝐲𝐨𝐮"
+            android:textColor="#F3EBEB"
+            android:textStyle="bold"
+            android:layout_marginLeft="25dp"
+            android:textSize="24dp" />
+
+
+    <GridView
+        android:id="@+id/grid_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="30dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp" />
+
+    </RelativeLayout>
+
+
+
 
     </RelativeLayout>
 
 
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/navigation_view"
-        android:layout_width="wrap_content"
+        android:layout_width="230dp"
         android:layout_height="match_parent"
+        android:layout_marginTop="42dp"
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/header_lay"

@@ -6,5 +6,6 @@
     <color name="custom_rating_bar_color">#FFC107</color> <!-- Change this to the desired color -->
     <color name="custom_rating_bar_background_color">#C0C0C0</color> <!-- Change this to the desired background color -->
 
-
+    <color name="bgcolor">@android:color/white</color>
+    <color name="bgcolor21">#80ffffff</color>
 </resources>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="260dp"
+    android:layout_height="240dp"
     android:orientation="vertical"
     android:gravity="bottom"
     android:background="@drawable/img_7"
@@ -24,7 +24,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="CREATED BY S.S SHELADIYA ❤️"
+        android:text="S.S SHELADIYA ❤️"
         android:textColor="@color/black"
         android:textSize="16dp"/>
 

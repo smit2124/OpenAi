@@ -35,6 +35,7 @@
         android:rating="0" />
 
     <TextView
+        android:id="@+id/maybelater"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Maybe Later"

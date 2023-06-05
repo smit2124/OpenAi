@@ -75,7 +75,10 @@ public class search extends AppCompatActivity {
         clearchat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                messageList.clear();
+                if(messageList!=null && messageList.size()>0){
+                    messageList.clear();
+                    messageAdapter.notifyDataSetChanged();
+                }
             }
         });
 
@@ -110,6 +113,7 @@ public class search extends AppCompatActivity {
         String editTextVal = getIntent().getStringExtra("editTextVal");
         if (editTextVal != null){
         editTextVal = editTextVal.substring(1, editTextVal.length()-1);
+
 
             messageList.add(new messagemodel("\uD835\uDC95\uD835\uDC9A\uD835\uDC91\uD835\uDC8A\uD835\uDC8F\uD835\uDC88...", messagemodel.SENT_BY_BOT));
             Log.d("editText", "onCreate: "+ editTextVal);
@@ -156,8 +160,7 @@ public class search extends AppCompatActivity {
 
                             @Override
                             public void onFailure(Throwable error) {
-                                // Handle the failure here
-                                // The 'error' parameter contains the encountered error
+
                             }
                         });
 
@@ -180,8 +183,11 @@ public class search extends AppCompatActivity {
     }
 
     void addResponse(String response) {
-        messageList.remove(messageList.size() - 1);
-        addToChat(response, messagemodel.SENT_BY_BOT);
+        if(messageList.size()>0) {
+            messageList.remove(messageList.size() - 1);
+            addToChat(response, messagemodel.SENT_BY_BOT);
+
+        }
     }
 
 
