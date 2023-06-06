@@ -1,27 +1,16 @@
 package com.example.openai;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.cardview.widget.CardView;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
-import android.app.Dialog;
-import android.content.ClipData;
+import android.Manifest;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.VibrationEffect;
@@ -29,20 +18,16 @@ import android.os.Vibrator;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import eightbitlab.com.blurview.RenderScriptBlur;
 
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RatingBar;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -51,8 +36,6 @@ import com.google.android.material.navigation.NavigationView;
 import java.util.ArrayList;
 import java.util.List;
 
-import eightbitlab.com.blurview.BlurView;
-import eightbitlab.com.blurview.RenderScriptBlur;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -67,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
     DrawerLayout drawerLayout;
     NavigationView navigation_view;
 
-    BlurView blurView;
+
 
 
     @Override
@@ -97,22 +80,15 @@ public class MainActivity extends AppCompatActivity {
         drawerLayout = findViewById(R.id.drawer_layout);
         navigation_view = findViewById(R.id.navigation_view);
         drawer_toggle_button = findViewById(R.id.drawer_toggle_button);
+       // MenuItem optfeedback = findViewById(R.id.optfeedback);
 
 
-
-//
-//        View decorview = getWindow().getDecorView();
-//        ViewGroup rootview= (ViewGroup) decorview.findViewById(R.id.content);
-//        Drawable windowbackground =   decorview.getBackground();
-//
-//        blurView = findViewById(R.id.blurView);
-//
-//        blurView.setupWith(rootview).setFrameClearDrawable(windowbackground)
-//                        .setBlurRadius(28f)
-//                                .setBlurAutoUpdate(true)
-
-
-
+//        optfeedback.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+//            @Override
+//            public boolean onMenuItemClick(@NonNull MenuItem item) {
+//                return false;
+//            }
+//        });
 
 
         navigation_view.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
@@ -129,15 +105,15 @@ public class MainActivity extends AppCompatActivity {
 
                 int id = item.getItemId();
 
-                if (id == R.id.optlog) {
-                    Toast.makeText(MainActivity.this, "hii", Toast.LENGTH_SHORT).show();
-                } else if (id == R.id.optshare) {
+                if (id == R.id.optshare) {
                     Intent share = new Intent(Intent.ACTION_SEND);
                     share.setType("Text/plain");
                     share.putExtra(Intent.EXTRA_TEXT, "download this app, https://www.goggle.com");
                     startActivity(Intent.createChooser(share, "share"));
                 } else if (id == R.id.optrate) {
                     showRateUsDialog();
+                } else if (id == R.id.optfeedback) {
+                    startActivity(new Intent(MainActivity.this, MainActivity3.class));
                 }
 
 
@@ -150,7 +126,7 @@ public class MainActivity extends AppCompatActivity {
         mCardDataList = new ArrayList<>();
         mCardDataList.add(new CardData("topic-explainer", R.drawable.topic, "\uD835\uDC13\uD835\uDC28\uD835\uDC29\uD835\uDC22\uD835\uDC1C \uD835\uDC04\uD835\uDC31\uD835\uDC29\uD835\uDC25\uD835\uDC1A\uD835\uDC22\uD835\uDC27\uD835\uDC1E\uD835\uDC2B", "Explain Like 5 Year Old Child"));
         mCardDataList.add(new CardData("compare-topics", R.drawable.compare, "\uD835\uDC02\uD835\uDC28\uD835\uDC26\uD835\uDC29\uD835\uDC1A\uD835\uDC2B\uD835\uDC1E \uD835\uDC13\uD835\uDC28\uD835\uDC29\uD835\uDC22\uD835\uDC1C", "Get Difference with Pros & Cons"));
-        mCardDataList.add(new CardData("summarise-text", R.drawable.summarize, "\uD835\uDC02\uD835\uDC28\uD835\uDC26\uD835\uDC29\uD835\uDC1A\uD835\uDC2B\uD835\uDC1E \uD835\uDC13\uD835\uDC28\uD835\uDC29\uD835\uDC22\uD835\uDC1C", "Easy & Quick to Understand"));
+        mCardDataList.add(new CardData("summarise-text", R.drawable.summarize, "\uD835\uDC12\uD835\uDC2E\uD835\uDC26\uD835\uDC26\uD835\uDC1A\uD835\uDC2B\uD835\uDC22\uD835\uDC2C\uD835\uDC1E-\uD835\uDC13\uD835\uDC1E\uD835\uDC31\uD835\uDC2D", "Easy & Quick to Understand"));
         mCardDataList.add(new CardData("mcq-type-quiz", R.drawable.mcq, "\uD835\uDC0C\uD835\uDC1C\uD835\uDC2A  \uD835\uDC13\uD835\uDC32\uD835\uDC29\uD835\uDC1E \uD835\uDC10\uD835\uDC2E\uD835\uDC22\uD835\uDC33", "Generate MCQs with Answer"));
         mCardDataList.add(new CardData("comprehensive-study-plan", R.drawable.study, "\uD835\uDC02\uD835\uDC2B\uD835\uDC1E\uD835\uDC1A\uD835\uDC2D\uD835\uDC1E \uD835\uDC12\uD835\uDC2D\uD835\uDC2E\uD835\uDC1D\uD835\uDC32 \uD835\uDC0F\uD835\uDC25\uD835\uDC1A\uD835\uDC27", "Comprehensive Study Plan"));
 
@@ -200,14 +176,9 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void loadfragment(Fragment fragment) {
 
-        FragmentManager fm = getSupportFragmentManager();
-        FragmentTransaction ft = fm.beginTransaction();
 
-        ft.add(R.id.container, fragment);
-        ft.commit();
-    }
+
 
 
     private void alert() {
@@ -268,6 +239,9 @@ public class MainActivity extends AppCompatActivity {
             drawerLayout.openDrawer(GravityCompat.START);
         }
     }
+
+
+
 }
 
 

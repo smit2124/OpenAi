@@ -94,6 +94,7 @@ public class search extends AppCompatActivity {
             messageList.add(new messagemodel(usersearch, "me"));
             messageList.add(new messagemodel("\uD835\uDC95\uD835\uDC9A\uD835\uDC91\uD835\uDC8A\uD835\uDC8F\uD835\uDC88...", messagemodel.SENT_BY_BOT));
 
+
             CallApi callApi = new CallApi();
             callApi.callAPI(usersearch, new CallApi.ApiResponseCallback() {
                 @Override

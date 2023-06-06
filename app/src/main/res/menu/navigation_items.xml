@@ -6,10 +6,12 @@
         android:title="Rate Us"
         android:icon="@drawable/rate"/>
 
+
     <item
-        android:id="@+id/optlog"
-        android:title="Log in"
-        android:icon="@drawable/login"/>
+        android:id="@+id/optfeedback"
+        android:title="Feedback"
+        android:icon="@drawable/feedback"/>
+
     <item
         android:id="@+id/optshare"
         android:title="Share"

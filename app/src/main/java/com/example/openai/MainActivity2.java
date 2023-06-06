@@ -241,7 +241,7 @@ public class MainActivity2 extends AppCompatActivity {
                 label.setText(title);
                 label.setTextSize(18);
                 label.setTypeface(Typeface.DEFAULT_BOLD);
-                label.setTextColor(getResources().getColor(R.color.black));
+                label.setTextColor(getResources().getColor(R.color.white));
 
 
                 LinearLayout.LayoutParams labelLayoutParams = new LinearLayout.LayoutParams(
@@ -249,7 +249,7 @@ public class MainActivity2 extends AppCompatActivity {
                         LinearLayout.LayoutParams.WRAP_CONTENT);
                 labelLayoutParams.width = 450;
                 labelLayoutParams.height = 70;
-                labelLayoutParams.setMargins(00, 60, 20, 00);
+                labelLayoutParams.setMargins(00, 70, 20, 00);
 
                 label.setLayoutParams(labelLayoutParams);
                 linearLayout.addView(label);
@@ -264,8 +264,8 @@ public class MainActivity2 extends AppCompatActivity {
                 editText.setTextSize(18);
                 editText.setBackground(borderDrawable);
                 editText.setPadding(20, 25, 20, 25);
-                editText.setTextColor(getResources().getColor(R.color.black));
-                editText.setHintTextColor(getResources().getColor(R.color.black));
+                editText.setTextColor(getResources().getColor(R.color.white));
+                editText.setHintTextColor(getResources().getColor(R.color.white));
                 editText.setText(property.getString("default"));
 
 

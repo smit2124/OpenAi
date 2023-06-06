@@ -17,7 +17,7 @@
         android:paddingEnd="-5dp"
         android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar"
         android:scrollbarAlwaysDrawVerticalTrack="true"
-        android:background="@drawable/backgroundgradient"
+        android:background="@drawable/dark"
        >
 
         <androidx.appcompat.widget.Toolbar
@@ -54,7 +54,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Open Ai"
+                android:text="Open AI"
                 android:textSize="23dp"
                 android:layout_marginStart="25dp"
                 android:textColor="@color/white"/>

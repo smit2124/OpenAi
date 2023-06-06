@@ -5,13 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/img_2"
+
     tools:context=".search">
 
     <androidx.appcompat.widget.Toolbar
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:backgroundTint="#D30E0E0E"
+        android:backgroundTint="#BF0E0E0E"
         android:background="@drawable/toolbar_border"
+        android:layout_marginTop="25dp"
         android:elevation="5dp"
         android:backgroundTintMode="add"
         >

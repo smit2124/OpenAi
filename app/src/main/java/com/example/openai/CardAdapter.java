@@ -64,7 +64,7 @@ public class CardAdapter extends BaseAdapter {
 
 
         CardData cardData = mcardDataList.get(position);
-    //   cardView.setCardBackgroundColor(Color.parseColor(cardData.getColor()));
+        //cardView.setCardBackgroundColor(Color.parseColor("#262628"));
         iconImageView.setImageResource(cardData.getIcon());
         titleTextView.setText(cardData.getTitle());
         discTextView.setText(cardData.getDisc());
