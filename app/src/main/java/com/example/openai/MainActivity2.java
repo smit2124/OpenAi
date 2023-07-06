@@ -26,6 +26,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -142,6 +143,30 @@ public class MainActivity2 extends AppCompatActivity {
                 "    }\n" +
                 "  },\n" +
                 "  {\n" +
+                "    \"id\": \"english-dictionary\",\n" +
+                "    \"title\": \"English Dictionary\",\n" +
+
+                "    \"prompt\": \"Act like an English teacher and give me the definition of the word {word}, in plain language, and give me three examples of its use in English. Also, give me an explanation of the etymology of the word\",\n" +
+                "    \"schema\": {\n" +
+                "      \"properties\": {\n" +
+                "        \"{text}\": {\n" +
+                "          \"type\": \"text\",\n" +
+                "          \"title\": \"Word\",\n" +
+                "          \"default\": \"Consult a dictionary and enter a word\",\n" +
+                "          \"placeholder\": \"Consult a dictionary and enter a word\"\n" +
+                "        },\n" +
+                "        \"{number}\": {\n" +
+                "          \"type\": \"number\",\n" +
+                "          \"title\": \"No. of Questions\",\n" +
+                "          \"default\": \"5\",\n" +
+                "          \"Placeholder\": \"Enter number\"\n" +
+                "        }\n" +
+                "      }\n" +
+                "    }\n" +
+                "  },\n" +
+                "  {\n" +
+
+
                 "    \"id\": \"comprehensive-study-plan\",\n" +
                 "    \"title\": \"Comprehensive-Study-Plan\",\n" +
 
@@ -196,8 +221,8 @@ public class MainActivity2 extends AppCompatActivity {
         Vibrator vibrator = (Vibrator) getSystemService(VIBRATOR_SERVICE);
 
         Toolbar tool = findViewById(R.id.tool);
+
         String s = getIntent().getStringExtra("card_id");
-        //tool.getNavigationIcon();
 
         tool.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -209,7 +234,9 @@ public class MainActivity2 extends AppCompatActivity {
 
         JSONObject jsonObject = jsonGetter();
         try {
+
             tool.setTitle(jsonObject.getString("title"));
+
         } catch (JSONException e) {
             throw new RuntimeException(e);
         }
@@ -241,7 +268,8 @@ public class MainActivity2 extends AppCompatActivity {
                 label.setText(title);
                 label.setTextSize(18);
                 label.setTypeface(Typeface.DEFAULT_BOLD);
-                label.setTextColor(getResources().getColor(R.color.white));
+                label.setTextColor(getResources().getColor(R.color.black));
+
 
 
                 LinearLayout.LayoutParams labelLayoutParams = new LinearLayout.LayoutParams(
@@ -264,8 +292,8 @@ public class MainActivity2 extends AppCompatActivity {
                 editText.setTextSize(18);
                 editText.setBackground(borderDrawable);
                 editText.setPadding(20, 25, 20, 25);
-                editText.setTextColor(getResources().getColor(R.color.white));
-                editText.setHintTextColor(getResources().getColor(R.color.white));
+                editText.setTextColor(getResources().getColor(R.color.black));
+                editText.setHintTextColor(getResources().getColor(R.color.black));
                 editText.setText(property.getString("default"));
 
 

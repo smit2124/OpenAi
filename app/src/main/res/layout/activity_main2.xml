@@ -4,24 +4,19 @@
     android:id="@+id/relative"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/dark1">
+    android:background="#D8D6DB">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/tool"
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:layout_marginTop="38dp"
-        android:background="#80000000"
-        app:titleTextColor="@color/white"
+        android:layout_marginTop="34dp"
+        android:background="#D8D6DB"
+        app:titleTextColor="@color/black"
         app:navigationIcon="@drawable/arrow_back"
        >
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
-            android:textColor="@color/white"
-            android:textSize="22dp"/>
+
 
     </androidx.appcompat.widget.Toolbar>
 
@@ -35,20 +30,18 @@
         android:layout_marginTop="40dp"
         android:padding="25dp">
 
-
-
-
     </LinearLayout>
 
     <Button
         android:id="@+id/btn1"
         android:layout_below="@id/linear_layout"
         android:layout_width="100dp"
-        android:layout_height="50dp"
+        android:layout_height="60dp"
         android:layout_marginTop="10dp"
         android:layout_centerHorizontal="true"
-        android:text="SUBMIT"
+        android:text="Submit"
+        android:textSize="14dp"
         android:textColor="@color/white"
-        android:backgroundTint="#04496A"/>
+        android:backgroundTint="#40697C"/>
 
 </RelativeLayout>

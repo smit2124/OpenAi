@@ -4,11 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity3"
-    >
+    tools:context=".MainActivity3">
 
 
     <TextView
+        android:id="@+id/loc1"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:gravity="center_horizontal"
@@ -23,18 +23,18 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="320dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="120dp"
+        android:layout_marginEnd="40dp"
         android:hint="Name:"
         app:counterEnabled="true"
         app:counterMaxLength="20"
         app:endIconMode="clear_text"
-        app:startIconDrawable="@drawable/person"
         app:hintTextColor="@color/white"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="120dp"
-        android:layout_marginEnd="40dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:startIconDrawable="@drawable/person">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
@@ -42,23 +42,22 @@
     </com.google.android.material.textfield.TextInputLayout>
 
 
-
     <com.google.android.material.textfield.TextInputLayout
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="320dp"
         android:layout_height="wrap_content"
-        android:hint="Email:"
-        app:counterEnabled="true"
-        app:counterMaxLength="20"
-        app:endIconMode="clear_text"
-        app:startIconDrawable="@drawable/email"
-        app:hintTextColor="@color/white"
         android:layout_marginStart="40dp"
         android:layout_marginTop="220dp"
         android:layout_marginEnd="40dp"
+        android:hint="Email:"
+        app:counterEnabled="true"
+        app:counterMaxLength="30"
+        app:endIconMode="clear_text"
+        app:hintTextColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:startIconDrawable="@drawable/email">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
@@ -70,20 +69,21 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="320dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="320dp"
+        android:layout_marginEnd="40dp"
         android:hint="Country:"
         app:counterEnabled="true"
         app:counterMaxLength="20"
         app:endIconMode="clear_text"
-        app:startIconDrawable="@drawable/country"
         app:hintTextColor="@color/white"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="320dp"
-        android:layout_marginEnd="40dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:startIconDrawable="@drawable/country">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/country"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -93,27 +93,50 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="320dp"
         android:layout_height="wrap_content"
-        android:hint="Contact:"
-        app:counterEnabled="true"
-        app:counterMaxLength="10"
-        app:endIconMode="clear_text"
-        app:startIconDrawable="@drawable/phone"
-        app:prefixText="+91"
-
-        app:hintTextColor="@color/white"
         android:layout_marginStart="40dp"
         android:layout_marginTop="420dp"
         android:layout_marginEnd="40dp"
+        android:hint="Contact:"
+        app:counterEnabled="true"
+        app:counterMaxLength="10"
+
+        app:endIconMode="clear_text"
+        app:hintTextColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:prefixText="+91"
+        app:startIconDrawable="@drawable/phone">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="number"
-            android:maxLength="10"/>
+            android:maxLength="10" />
     </com.google.android.material.textfield.TextInputLayout>
 
+    <TextView
+        android:id="@+id/locat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.474"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.815" />
+
+    <Button
+        android:id="@+id/getloc1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="get loc"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.929" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

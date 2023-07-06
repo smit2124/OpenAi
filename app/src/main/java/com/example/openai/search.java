@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
@@ -72,13 +74,34 @@ public class search extends AppCompatActivity {
             }
         });
 
+
         clearchat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(messageList!=null && messageList.size()>0){
-                    messageList.clear();
-                    messageAdapter.notifyDataSetChanged();
-                }
+                AlertDialog.Builder builder = new AlertDialog.Builder(search.this);
+
+                builder.setTitle("Confirmation");
+                builder.setMessage("Are you sure you want to clear the chat?");
+
+                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        if (messageList != null && messageList.size() > 0) {
+                            messageList.clear();
+                            messageAdapter.notifyDataSetChanged();
+                        }
+                    }
+                });
+
+                builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+
+                AlertDialog dialog = builder.create();
+                dialog.show();
             }
         });
 
@@ -114,9 +137,7 @@ public class search extends AppCompatActivity {
         String editTextVal = getIntent().getStringExtra("editTextVal");
         if (editTextVal != null){
         editTextVal = editTextVal.substring(1, editTextVal.length()-1);
-
-
-            messageList.add(new messagemodel("\uD835\uDC95\uD835\uDC9A\uD835\uDC91\uD835\uDC8A\uD835\uDC8F\uD835\uDC88...", messagemodel.SENT_BY_BOT));
+        messageList.add(new messagemodel("\uD835\uDC95\uD835\uDC9A\uD835\uDC91\uD835\uDC8A\uD835\uDC8F\uD835\uDC88...", messagemodel.SENT_BY_BOT));
             Log.d("editText", "onCreate: "+ editTextVal);
             CallApi callApi = new CallApi();
             callApi.callAPI(editTextVal, new CallApi.ApiResponseCallback() {
@@ -147,25 +168,28 @@ public class search extends AppCompatActivity {
             if (vibrator != null) {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                     vibrator.vibrate(VibrationEffect.createOneShot(100, VibrationEffect.DEFAULT_AMPLITUDE));
-                    if (!TextUtils.isEmpty(question)) {
-                        addToChat(question, messagemodel.SENT_BY_ME);
-                        messageList.add(new messagemodel("\uD835\uDC95\uD835\uDC9A\uD835\uDC91\uD835\uDC8A\uD835\uDC8F\uD835\uDC88...", messagemodel.SENT_BY_BOT));
-                        CallApi callApi = new CallApi();
-                        callApi.callAPI(question, new CallApi.ApiResponseCallback() {
-                            @Override
-                            public void onResponse(String response) {
-                                // Handle the response here
-                                addResponse(response);
-                                // The 'response' parameter contains the API response
-                            }
+                    if (msgbox1.getText().toString().length() == 0) {
+                        msgbox1.setError("kuch input dega tabhi to output aayega naa yar..");
+                        if (!TextUtils.isEmpty(question)) {
+                            addToChat(question, messagemodel.SENT_BY_ME);
+                            messageList.add(new messagemodel("\uD835\uDC95\uD835\uDC9A\uD835\uDC91\uD835\uDC8A\uD835\uDC8F\uD835\uDC88...", messagemodel.SENT_BY_BOT));
+                            CallApi callApi = new CallApi();
+                            callApi.callAPI(question, new CallApi.ApiResponseCallback() {
+                                @Override
+                                public void onResponse(String response) {
+                                    // Handle the response here
+                                    addResponse(response);
+                                    // The 'response' parameter contains the API response
+                                }
 
-                            @Override
-                            public void onFailure(Throwable error) {
+                                @Override
+                                public void onFailure(Throwable error) {
 
-                            }
-                        });
+                                }
+                            });
 
-                    } else {
+                        } else {
+                        }
                     }
                 }
             }

@@ -43,6 +43,16 @@
         android:layout_marginTop="40dp"
         android:layout_gravity="center_horizontal"/>
 
+    <Button
+        android:id="@+id/ratesub"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Submit"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center_horizontal"
+        />
+
+
 
 
 

@@ -2,25 +2,22 @@ package com.example.openai;
 
 public class CardData {
 
-    private  String id;
-
+    private String id;
     private int icon;
     private String title;
+    private String disc;
+    private String colour;
 
-    private  String disc;
-
-    public CardData(String id,int icon,String title,String disc) {
-
+    public CardData(String id, int icon, String title, String disc, String colour) {
         this.id = id;
         this.icon = icon;
         this.title = title;
         this.disc = disc;
-
+        this.colour = colour;
     }
 
     public String getId() {
-
-        return  id;
+        return id;
     }
 
     public int getIcon() {
@@ -33,5 +30,9 @@ public class CardData {
 
     public String getDisc() {
         return disc;
+    }
+
+    public String getColour() {
+        return colour;
     }
 }

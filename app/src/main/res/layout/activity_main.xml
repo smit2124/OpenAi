@@ -12,26 +12,25 @@
         android:id="@+id/relative"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingTop="35dp"
+        android:paddingTop="30dp"
         android:paddingStart="-5dp"
         android:paddingEnd="-5dp"
         android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar"
         android:scrollbarAlwaysDrawVerticalTrack="true"
-        android:background="@drawable/dark"
-       >
+        android:background="#CECDCB">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/tooll"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="60dp"
             android:backgroundTint="@color/black"
             android:backgroundTintMode="add">
 
 
             <ImageButton
                 android:id="@+id/drawer_toggle_button"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
                 android:src="@drawable/drawer"
                 android:contentDescription="Open Drawer"
                 android:background="@null"
@@ -42,8 +41,9 @@
 
 
             <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:id="@+id/permission"
+                android:layout_width="42dp"
+                android:layout_height="42dp"
                 android:src="@drawable/logo"
                 android:layout_marginTop="10dp"
                 android:layout_gravity="start"/>
@@ -54,20 +54,23 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Open AI"
-                android:textSize="23dp"
+                android:text="OpenAI"
+                android:textSize="25dp"
+                android:textStyle="bold"
                 android:layout_marginStart="25dp"
-                android:textColor="@color/white"/>
+                android:textColor="@color/black"/>
+
 
 
             <ImageView
                 android:id="@+id/key"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
                 android:src="@drawable/key"
                 android:layout_gravity="end"
-                android:layout_marginEnd="25dp"
-                android:layout_marginStart="125dp" />
+                android:layout_marginEnd="25dp"/>
+
+
 
 
 
@@ -84,14 +87,15 @@
             android:layout_marginLeft="25dp"
             android:layout_marginTop="60dp"
             android:text="𝐖𝐡𝐚𝐭𝐬 𝐧𝐞𝐰 𝐭𝐨 𝐥𝐞𝐚𝐫𝐧 ?"
-            android:textColor="#F3EBEB"
-            android:textSize="24sp"
+            android:textColor="@color/black"
+            android:textSize="30sp"
             android:textStyle="bold|italic" />
+
 
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="48dp"
+            android:layout_height="60dp"
             android:layout_marginTop="110dp"
             android:background="@drawable/search_view_border"
             android:padding="0dp"
@@ -106,55 +110,67 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_toStartOf="@+id/searchbtn"
-                android:hint=" Search here"
+                android:hint="Ask Anything..."
+                android:textSize="20dp"
                 android:background="@null"
-                android:layout_marginStart="12dp"
-                android:textColorHint="@color/white"
-                android:textColor="@color/white"
+                android:layout_marginStart="20dp"
+                android:textColorHint="#100F0F"
+                android:textColor="#020202"
                 android:maxLines="3"/>
 
             <ImageView
                 android:id="@+id/searchbtn"
-                android:layout_width="34dp"
-                android:layout_height="34dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
+                android:src="@drawable/img_4"
                 android:layout_marginTop="4dp"
                 android:layout_marginEnd="6dp"
-                android:padding="4dp"
-                android:src="@drawable/img_4" />
+                android:padding="4dp" />
 
 
 
         </RelativeLayout>
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/scr"
+        android:layout_marginTop="10dp"
+        android:fillViewport="true"
+        android:layout_below="@+id/bottomlayout">
 
-    <RelativeLayout
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-    android:layout_below="@id/bottomlayout">
 
         <TextView
             android:id="@+id/textView4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:scrollbars="vertical"
             android:text="𝐀𝐩𝐩𝐬 𝐟𝐨𝐫 𝐲𝐨𝐮"
-            android:textColor="#F3EBEB"
+            android:textColor="@color/black"
             android:textStyle="bold"
             android:layout_marginLeft="25dp"
-            android:textSize="24dp" />
+            android:textSize="26dp" />
+
+    </ScrollView>
 
 
-    <GridView
-        android:id="@+id/grid_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="30dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="10dp" />
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/relgrid"
+                android:layout_below="@id/scr">
 
+
+
+        <GridView
+            android:id="@+id/grid_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"/>
     </RelativeLayout>
 
 
