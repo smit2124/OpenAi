@@ -81,7 +81,7 @@ public class search extends AppCompatActivity {
                 AlertDialog.Builder builder = new AlertDialog.Builder(search.this);
 
                 builder.setTitle("Confirmation");
-                builder.setMessage("Are you sure you want to clear the chat?");
+                builder.setMessage("Are you sure you want to clear the chat ?");
 
                 builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
@@ -89,6 +89,7 @@ public class search extends AppCompatActivity {
                         if (messageList != null && messageList.size() > 0) {
                             messageList.clear();
                             messageAdapter.notifyDataSetChanged();
+
                         }
                     }
                 });
@@ -167,12 +168,18 @@ public class search extends AppCompatActivity {
 
             if (vibrator != null) {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                    vibrator.vibrate(VibrationEffect.createOneShot(100, VibrationEffect.DEFAULT_AMPLITUDE));
-                    if (msgbox1.getText().toString().length() == 0) {
-                        msgbox1.setError("kuch input dega tabhi to output aayega naa yar..");
+                    vibrator.vibrate(VibrationEffect.createOneShot(30, VibrationEffect.DEFAULT_AMPLITUDE));
+
+//                    if (msgbox1.getText().toString().length() == 0) {
+//                        msgbox1.setError("Enter the prompt..");
+
                         if (!TextUtils.isEmpty(question)) {
                             addToChat(question, messagemodel.SENT_BY_ME);
                             messageList.add(new messagemodel("\uD835\uDC95\uD835\uDC9A\uD835\uDC91\uD835\uDC8A\uD835\uDC8F\uD835\uDC88...", messagemodel.SENT_BY_BOT));
+
+
+
+
                             CallApi callApi = new CallApi();
                             callApi.callAPI(question, new CallApi.ApiResponseCallback() {
                                 @Override
@@ -189,10 +196,11 @@ public class search extends AppCompatActivity {
                             });
 
                         } else {
+                                msgbox1.getText().clear();
                         }
                     }
                 }
-            }
+           //
         });
     }
 

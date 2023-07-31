@@ -15,9 +15,6 @@
         app:titleTextColor="@color/black"
         app:navigationIcon="@drawable/arrow_back"
        >
-
-
-
     </androidx.appcompat.widget.Toolbar>
 
 
@@ -27,7 +24,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="45dp"
         android:padding="25dp">
 
     </LinearLayout>

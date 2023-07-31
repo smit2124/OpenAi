@@ -234,7 +234,6 @@ public class MainActivity2 extends AppCompatActivity {
 
         JSONObject jsonObject = jsonGetter();
         try {
-
             tool.setTitle(jsonObject.getString("title"));
 
         } catch (JSONException e) {
@@ -269,7 +268,6 @@ public class MainActivity2 extends AppCompatActivity {
                 label.setTextSize(18);
                 label.setTypeface(Typeface.DEFAULT_BOLD);
                 label.setTextColor(getResources().getColor(R.color.black));
-
 
 
                 LinearLayout.LayoutParams labelLayoutParams = new LinearLayout.LayoutParams(
@@ -330,9 +328,9 @@ public class MainActivity2 extends AppCompatActivity {
 
                         if (vibrator != null) {
                             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                                vibrator.vibrate(VibrationEffect.createOneShot(100, VibrationEffect.DEFAULT_AMPLITUDE));
+                                vibrator.vibrate(VibrationEffect.createOneShot(20, VibrationEffect.DEFAULT_AMPLITUDE));
                                 if (editText.getText().toString().length() == 0) {
-                                    editText.setError("Fill the data");
+                                    editText.setError("ꜰɪʟʟ ᴛʜᴇ ᴅᴀᴛᴀ");
 
                                     if (TextUtils.isEmpty(editText.getText())) {
 
@@ -345,7 +343,7 @@ public class MainActivity2 extends AppCompatActivity {
                                 }
                             }
                         }
-                    }
+                  }
                 });
 
 

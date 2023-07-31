@@ -67,7 +67,7 @@ import java.util.List;
 import java.util.Locale;
 
 
-public class MainActivity extends AppCompatActivity implements LocationListener   {
+public class MainActivity extends AppCompatActivity implements LocationListener{
 
     EditText search1;
 
@@ -194,7 +194,7 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
                         vibrator.vibrate(VibrationEffect.createOneShot(30, VibrationEffect.DEFAULT_AMPLITUDE));
 
                         if (search1.getText().toString().length() == 0) {
-                            search1.setError("kuch information to dede yar..");
+                            search1.setError("ᴇɴᴛᴇʀ ᴛʜᴇ ᴘʀᴏᴍᴘᴛ");
 
 
                         } else {
